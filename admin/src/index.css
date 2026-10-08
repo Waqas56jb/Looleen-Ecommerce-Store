@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   LOOKS Admin — design tokens
+   Same brand palette as the storefront, used with enterprise restraint:
+   white/ivory surfaces, dark type, 1px borders, small rose accents.
+   ========================================================================== */
+@theme {
+  --color-ivory: #faf7f2;
+  --color-blush: #f1e4dc;
+  --color-rose: #b76e79;
+  --color-rose-dark: #9c5964;
+  --color-rose-soft: #f6e9ea;
+  --color-champagne: #c9a66b;
+  --color-champagne-soft: #f3ead9;
+  --color-ink: #2a1e22;
+  --color-ink-soft: #3d2f33;
+  --color-muted: #6f6266;
+  --color-subtle: #9a8f92;
+  --color-line: #e5ddd7;
+  --color-line-soft: #efe9e4;
+  --color-mist: #f7f3ee;
+  --color-surface: #ffffff;
+  --color-success: #3f7656;
+  --color-success-soft: #e8f1eb;
+  --color-error: #a74747;
+  --color-error-soft: #f6e6e6;
+  --color-warning: #a97835;
+  --color-warning-soft: #f6eedf;
+  --color-info: #4b6584;
+  --color-info-soft: #e7edf3;
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-arabic: "Tajawal", "Inter", system-ui, sans-serif;
+
+  --radius-xs: 2px;
+
+  --shadow-card: 0 1px 2px rgb(42 30 34 / 0.04);
+  --shadow-pop: 0 1px 2px rgb(42 30 34 / 0.05), 0 12px 32px -12px rgb(42 30 34 / 0.22);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-fade-in: fade-in 0.2s var(--ease-out-soft) both;
+  --animate-fade-up: fade-up 0.3s var(--ease-out-soft) both;
+  --animate-scale-in: scale-in 0.18s var(--ease-out-soft) both;
+  --animate-slide-down: slide-down 0.16s var(--ease-out-soft) both;
+  --animate-slide-in-end: slide-in-end 0.26s var(--ease-out-soft) both;
+  --animate-slide-in-start: slide-in-start 0.26s var(--ease-out-soft) both;
+  --animate-shimmer: shimmer 1.5s linear infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slide-down {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slide-in-end {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes slide-in-start {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes shimmer {
+    from { background-position: -400px 0; }
+    to { background-position: 400px 0; }
+  }
+}
+
+[dir="rtl"] .animate-slide-in-end { animation-name: slide-in-start; }
+[dir="rtl"] .animate-slide-in-start { animation-name: slide-in-end; }
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-ivory text-ink font-sans text-sm antialiased;
+  }
+  html[lang="ar"] body,
+  html[lang="ar"] .font-serif {
+    font-family: var(--font-arabic);
+  }
+  html[lang="ar"] .font-serif {
+    letter-spacing: 0 !important;
+  }
+  .font-serif {
+    font-feature-settings: "lnum" 1;
+  }
+  ::selection {
+    background: var(--color-rose);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-rose);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+  /* Tables: tabular figures for aligned numbers */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .page-container {
+    @apply mx-auto w-full max-w-[1600px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8;
+  }
+  .eyebrow {
+    @apply text-[11px] font-semibold tracking-[0.14em] text-muted uppercase;
+  }
+  .card {
+    @apply rounded-lg border border-line bg-surface shadow-card;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, #f1ebe6 0px, #f8f4f0 120px, #f1ebe6 240px);
+    background-size: 800px 100%;
+    @apply animate-shimmer rounded-md;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #ddd3cc transparent;
+  }
+}
+
+/* Print: order invoices etc. — hide app chrome */
+@media print {
+  .no-print,
+  aside {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+  .print-area {
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

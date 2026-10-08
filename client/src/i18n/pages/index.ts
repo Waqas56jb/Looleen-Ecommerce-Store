@@ -1,0 +1,8 @@
+export { home } from './home'
+export { catalog } from './catalog'
+export { product } from './product'
+export { cart } from './cart'
+export { checkout } from './checkout'
+export { auth } from './auth'
+export { account } from './account'
+export { pages } from './pages'
