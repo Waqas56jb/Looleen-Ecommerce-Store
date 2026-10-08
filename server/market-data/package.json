@@ -1,0 +1,20 @@
+{
+  "name": "looks-market-data",
+  "version": "1.0.0",
+  "description": "Saudi beauty market price collection and LOOKS master catalog builder",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "private": "true",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  }
+}
