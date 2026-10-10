@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { BarChart3, Bell, Boxes, LayoutDashboard, Megaphone, MessageSquareText, Package, Palette, Settings, ShoppingBag, Undo2, UserCircle, Users } from 'lucide-react'
+import { BarChart3, Bell, Boxes, ClipboardCheck, LayoutDashboard, Megaphone, MessageSquareText, Package, Palette, Settings, ShoppingBag, Undo2, UserCircle, Users } from 'lucide-react'
 import type { Permission } from '@/types'
 
 export interface NavChild {
@@ -47,6 +47,17 @@ export const NAV: NavGroup[] = [
       { labelKey: 'nav.shipped', to: '/orders?status=shipped', match: 'status=shipped' },
       { labelKey: 'nav.delivered', to: '/orders?status=delivered', match: 'status=delivered' },
       { labelKey: 'nav.cancelled', to: '/orders?status=cancelled', match: 'status=cancelled' },
+    ],
+  },
+  {
+    id: 'sourcing',
+    labelKey: 'nav.sourcing',
+    icon: ClipboardCheck,
+    permission: 'products',
+    children: [
+      { labelKey: 'nav.approvals', to: '/sourcing' },
+      { labelKey: 'nav.suppliers', to: '/sourcing/suppliers' },
+      { labelKey: 'nav.retailersRules', to: '/sourcing/rules' },
     ],
   },
   { id: 'returns', labelKey: 'nav.returns', icon: Undo2, to: '/returns', permission: 'returns', badge: 'openReturns' },
@@ -126,6 +137,8 @@ export const COMMANDS: { labelKey: string; to: string; icon: LucideIcon; keyword
   { labelKey: 'nav.customers', to: '/customers', icon: Users, keywords: 'clients users' },
   { labelKey: 'nav.brands', to: '/brands', icon: Package, keywords: 'distributors' },
   { labelKey: 'nav.inventory', to: '/inventory', icon: Boxes, keywords: 'stock warehouse' },
+  { labelKey: 'nav.approvals', to: '/sourcing', icon: ClipboardCheck, keywords: 'approval sourcing supplier cost competitor prices margin publish' },
+  { labelKey: 'nav.suppliers', to: '/sourcing/suppliers', icon: ClipboardCheck, keywords: 'supplier price list wella keune cost' },
   { labelKey: 'nav.coupons', to: '/coupons', icon: Megaphone, keywords: 'discount codes promo' },
   { labelKey: 'nav.reviews', to: '/reviews', icon: MessageSquareText, keywords: 'ratings moderation' },
   { labelKey: 'nav.returns', to: '/returns', icon: Undo2, keywords: 'refunds rma' },

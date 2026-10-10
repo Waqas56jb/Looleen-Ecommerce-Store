@@ -166,6 +166,10 @@ export const ar: DeepPartial<Dictionary> = {
     reviews: 'التقييمات',
     allReviews: 'كل التقييمات',
     moderation: 'بانتظار المراجعة',
+    sourcing: 'التوريد والاعتماد',
+    approvals: 'اعتماد المنتجات',
+    suppliers: 'الموردون',
+    retailersRules: 'المتاجر والقواعد',
     reports: 'التقارير',
     overview: 'نظرة عامة',
     sales: 'المبيعات',
@@ -273,4 +277,5 @@ export const ar: DeepPartial<Dictionary> = {
   settings: P.settings.ar,
   system: P.system.ar,
   auth: P.auth.ar,
+  sourcing: P.sourcing.ar,
 }

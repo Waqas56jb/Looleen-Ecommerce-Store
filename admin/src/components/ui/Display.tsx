@@ -184,6 +184,8 @@ const STATUS_TONE: Record<string, Tone> = {
   answered: 'info',
   closed: 'neutral',
   success: 'success',
+  incomplete: 'warning',
+  ready: 'info',
 }
 
 /** Consistent status colors across orders, products, coupons, reviews, returns… */

@@ -39,6 +39,11 @@ const router = createBrowserRouter([
       { path: '/inventory', element: page(() => import('@/pages/InventoryPage')) },
       { path: '/inventory/:id', element: page(() => import('@/pages/InventoryDetailPage')) },
 
+      { path: '/sourcing', element: page(() => import('@/pages/SourcingPage')) },
+      { path: '/sourcing/suppliers', element: page(() => import('@/pages/SourcingSuppliersPage')) },
+      { path: '/sourcing/rules', element: page(() => import('@/pages/SourcingRulesPage')) },
+      { path: '/sourcing/:id', element: page(() => import('@/pages/SourcingDetailPage')) },
+
       { path: '/orders', element: page(() => import('@/pages/OrdersPage')) },
       { path: '/orders/:id', element: page(() => import('@/pages/OrderDetailPage')) },
 

@@ -9,6 +9,8 @@ import { STORE_CONFIG } from '@/config/store'
 import { seedBrands, seedCategories, seedMovements, seedProducts } from '@/data/seed/catalog'
 import { seedActivity, seedBanners, seedCampaigns, seedCoupons, seedHomepage, seedNotifications, seedOffers, seedReturns, seedReviews, seedSettings } from '@/data/seed/operations'
 import { seedAdmins, seedCustomers, seedOrders, seedTickets } from '@/data/seed/people'
+import { seedRetailers, seedRules, seedSourcing, seedSuppliers } from '@/data/seed/sourcing'
+import type { ApprovalRules, Retailer, SourcingProduct, Supplier } from '@/types/sourcing'
 import type {
   ActivityLog,
   AdminBrand,
@@ -76,6 +78,9 @@ export const db = {
   notifications: collection<AdminNotification>('notifications', seedNotifications),
   activity: collection<ActivityLog>('activity', seedActivity),
   admins: collection<AdminUser>('admins', seedAdmins),
+  sourcing: collection<SourcingProduct>('sourcing', seedSourcing),
+  suppliers: collection<Supplier>('suppliers', seedSuppliers),
+  retailers: collection<Retailer>('retailers', seedRetailers),
 }
 
 export type DbName = keyof typeof db
@@ -89,6 +94,19 @@ export const settingsDb = create<SettingsState>()(
   persist(
     (set) => ({ settings: seedSettings, setSettings: (settings) => set({ settings }) }),
     { name: `${STORE_CONFIG.storagePrefix}settings`, version: DB_VERSION, migrate: () => ({ settings: seedSettings }) as SettingsState },
+  ),
+)
+
+interface RulesState {
+  rules: ApprovalRules
+  setRules: (r: ApprovalRules) => void
+}
+
+/** Product approval rules (Sourcing → Rules) */
+export const rulesDb = create<RulesState>()(
+  persist(
+    (set) => ({ rules: seedRules, setRules: (rules) => set({ rules }) }),
+    { name: `${STORE_CONFIG.storagePrefix}approval_rules`, version: DB_VERSION, migrate: () => ({ rules: seedRules }) as RulesState },
   ),
 )
 
@@ -106,4 +124,5 @@ export function write<K extends DbName>(name: K, items: ReturnType<(typeof db)[K
 export function resetAll() {
   Object.values(db).forEach((c) => c.getState().reset())
   settingsDb.getState().setSettings(seedSettings)
+  rulesDb.getState().setRules(seedRules)
 }

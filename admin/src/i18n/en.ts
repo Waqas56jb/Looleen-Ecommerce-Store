@@ -166,6 +166,10 @@ export const en = {
     reviews: 'Reviews',
     allReviews: 'All Reviews',
     moderation: 'Pending Moderation',
+    sourcing: 'Sourcing & Approval',
+    approvals: 'Product Approval',
+    suppliers: 'Suppliers',
+    retailersRules: 'Retailers & Rules',
     reports: 'Reports',
     overview: 'Overview',
     sales: 'Sales',
@@ -282,6 +286,7 @@ export const en = {
   settings: P.settings.en,
   system: P.system.en,
   auth: P.auth.en,
+  sourcing: P.sourcing.en,
 }
 
 export type Dictionary = typeof en
