@@ -404,83 +404,19 @@ export const SOURCING_DATA: SourcingSeedProduct[] = [
         "listedName": "شامبو ابسولوت فوليوم للشعر الخفيف 300مل",
         "verifiedAt": "2026-10-08T19:51:35.841Z",
         "verifiedBy": "LOOKS price collector"
-      }
-    ]
-  },
-  {
-    "id": "LK-037078",
-    "brand": "Keune",
-    "nameEn": "Care Blonde Savior shampoo",
-    "nameAr": "شامبو كيون كير بلوند سيفيور للشعر الأشقر والمعالج – 300 مل",
-    "size": "300 ml",
-    "barcode": "8719281080145",
-    "categoryEn": "Hair Care",
-    "categoryAr": "العناية بالشعر",
-    "offers": [
+      },
       {
-        "supplierId": "sup-keune",
-        "code": "23656",
-        "nameOnList": "Care Blonde Savior shampoo",
-        "sizeOnList": "300",
-        "listPrice": 55,
-        "discount": 0.25,
-        "netCost": 41.25,
-        "priceBasis": "Salon list price, VAT-exclusive; net = list x (1 - discount)",
-        "sourcePage": 2
-      }
-    ],
-    "prices": [
-      {
-        "id": "cp-8-1",
-        "retailerId": "looieen",
-        "price": 138,
-        "originalPrice": 185,
-        "seller": "Looieen",
+        "id": "cp-7-2",
+        "retailerId": "keuneksa",
+        "price": 80.5,
+        "originalPrice": 120.75,
+        "seller": "Keune KSA (official)",
         "inStock": true,
-        "url": "https://looieen.com/jgEbqAe",
+        "url": "https://keune-ksa.com/products/شامبو-ابسولوت-فوليوم-للشعر-الخفيف-300مل",
         "source": "automatic",
         "matchBy": "barcode",
-        "listedName": "شامبو كيون كير بلوند سيفيور للشعر الأشقر والمعالج – 300 مل",
-        "verifiedAt": "2026-10-08T19:34:13.906Z",
-        "verifiedBy": "LOOKS price collector"
-      }
-    ]
-  },
-  {
-    "id": "LK-037080",
-    "brand": "Keune",
-    "nameEn": "Care Blonde Savior Treatment",
-    "nameAr": "كيون كير بلوند سيفيور ليف إن تريتمنت 140 مل",
-    "size": "140 ml",
-    "barcode": "8719281080176",
-    "categoryEn": "Hair Care",
-    "categoryAr": "العناية بالشعر",
-    "offers": [
-      {
-        "supplierId": "sup-keune",
-        "code": "23657",
-        "nameOnList": "Care Blonde Savior Treatment",
-        "sizeOnList": "140",
-        "listPrice": 60,
-        "discount": 0.25,
-        "netCost": 45,
-        "priceBasis": "Salon list price, VAT-exclusive; net = list x (1 - discount)",
-        "sourcePage": 2
-      }
-    ],
-    "prices": [
-      {
-        "id": "cp-9-1",
-        "retailerId": "looieen",
-        "price": 138,
-        "originalPrice": 175,
-        "seller": "Looieen",
-        "inStock": true,
-        "url": "https://looieen.com/rRdoElR",
-        "source": "automatic",
-        "matchBy": "barcode",
-        "listedName": "كيون كير بلوند سيفيور ليف إن تريتمنت 140 مل",
-        "verifiedAt": "2026-10-08T19:34:44.998Z",
+        "listedName": "شامبو ابسولوت فوليوم للشعر الخفيف 300مل",
+        "verifiedAt": "2026-10-10T21:56:22.101Z",
         "verifiedBy": "LOOKS price collector"
       }
     ]
@@ -509,7 +445,7 @@ export const SOURCING_DATA: SourcingSeedProduct[] = [
     ],
     "prices": [
       {
-        "id": "cp-10-1",
+        "id": "cp-8-1",
         "retailerId": "looieen",
         "price": 138,
         "originalPrice": 195,
@@ -520,6 +456,126 @@ export const SOURCING_DATA: SourcingSeedProduct[] = [
         "matchBy": "barcode",
         "listedName": "بلسم كولور بريلينز للشعر المصبوغ 250مل",
         "verifiedAt": "2026-10-08T19:34:13.906Z",
+        "verifiedBy": "LOOKS price collector"
+      },
+      {
+        "id": "cp-8-2",
+        "retailerId": "keuneksa",
+        "price": 86.25,
+        "originalPrice": 125.35,
+        "seller": "Keune KSA (official)",
+        "inStock": true,
+        "url": "https://keune-ksa.com/products/بلسم-كولور-بريلينز-للشعر-المصبوغ-250مل",
+        "source": "automatic",
+        "matchBy": "barcode",
+        "listedName": "بلسم كولور بريلينز للشعر المصبوغ 250مل",
+        "verifiedAt": "2026-10-10T21:56:25.863Z",
+        "verifiedBy": "LOOKS price collector"
+      }
+    ]
+  },
+  {
+    "id": "LK-037107",
+    "brand": "Keune",
+    "nameEn": "CARE KERATIN SMOOTH SHAMPOO",
+    "nameAr": "شامبو كيراتين سموث للشعر المجعد",
+    "size": "300 ml",
+    "barcode": "8719281103479",
+    "categoryEn": "Hair Care",
+    "categoryAr": "العناية بالشعر",
+    "offers": [
+      {
+        "supplierId": "sup-keune",
+        "code": "21353",
+        "nameOnList": "CARE KERATIN SMOOTH SHAMPOO",
+        "sizeOnList": "300ml",
+        "listPrice": 55,
+        "discount": 0.25,
+        "netCost": 41.25,
+        "priceBasis": "Salon list price, VAT-exclusive; net = list x (1 - discount)",
+        "sourcePage": 1
+      }
+    ],
+    "prices": [
+      {
+        "id": "cp-9-1",
+        "retailerId": "looieen",
+        "price": 103.5,
+        "originalPrice": 169,
+        "seller": "Looieen",
+        "inStock": true,
+        "url": "https://looieen.com/ZqnYvzx",
+        "source": "automatic",
+        "matchBy": "barcode",
+        "listedName": "شامبو كيراتين سموث 300 مل كيون",
+        "verifiedAt": "2026-10-08T19:36:42.391Z",
+        "verifiedBy": "LOOKS price collector"
+      },
+      {
+        "id": "cp-9-2",
+        "retailerId": "keuneksa",
+        "price": 80.5,
+        "originalPrice": 120.75,
+        "seller": "Keune KSA (official)",
+        "inStock": true,
+        "url": "https://keune-ksa.com/products/شامبو-كيراتين-سموث-300مل",
+        "source": "automatic",
+        "matchBy": "barcode",
+        "listedName": "شامبو كيراتين سموث 300مل",
+        "verifiedAt": "2026-10-10T21:55:09.740Z",
+        "verifiedBy": "LOOKS price collector"
+      }
+    ]
+  },
+  {
+    "id": "LK-037131",
+    "brand": "Keune",
+    "nameEn": "CARE VITAL NUTRITION SHAMPOO",
+    "nameAr": "شامبو فيتا للشعر التالف",
+    "size": "300 ml",
+    "barcode": "8719281103431",
+    "categoryEn": "Hair Care",
+    "categoryAr": "العناية بالشعر",
+    "offers": [
+      {
+        "supplierId": "sup-keune",
+        "code": "21320",
+        "nameOnList": "CARE VITAL NUTRITION SHAMPOO",
+        "sizeOnList": "300ml",
+        "listPrice": 55,
+        "discount": 0.25,
+        "netCost": 41.25,
+        "priceBasis": "Salon list price, VAT-exclusive; net = list x (1 - discount)",
+        "sourcePage": 1
+      }
+    ],
+    "prices": [
+      {
+        "id": "cp-10-1",
+        "retailerId": "looieen",
+        "price": 138,
+        "originalPrice": 185,
+        "seller": "Looieen",
+        "inStock": true,
+        "url": "https://looieen.com/wArQPVV",
+        "source": "automatic",
+        "matchBy": "barcode",
+        "listedName": "شامبو فيتال نيتريشن لاصلاح وترطيب الشعر من كيون 300 مل",
+        "verifiedAt": "2026-10-08T19:35:28.301Z",
+        "verifiedBy": "LOOKS price collector"
+      },
+      {
+        "id": "cp-10-2",
+        "retailerId": "keuneksa",
+        "price": 80.5,
+        "originalPrice": 120.75,
+        "seller": "Keune KSA (official)",
+        "inStock": true,
+        "url": "https://keune-ksa.com/products/شامبو-فيتال-300-مل",
+        "source": "automatic",
+        "matchBy": "barcode",
+        "listedName": "شامبو فيتال 300 مل",
+        "verifiedAt": "2026-10-10T21:56:41.550Z",
         "verifiedBy": "LOOKS price collector"
       }
     ]

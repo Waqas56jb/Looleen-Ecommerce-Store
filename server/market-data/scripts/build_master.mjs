@@ -37,6 +37,7 @@ export const STORES = [
   { id: 'beautyselect', name: 'Beauty Select', url: 'https://beautyselect.sa/' },
   { id: 'cosmeticssa', name: 'Cosmetics.sa', url: 'https://cosmetics.sa/' },
   { id: 'kohlalward', name: 'Kohl Al Ward', url: 'https://kohlalward.com/' },
+  { id: 'keuneksa', name: 'Keune KSA (official)', url: 'https://keune-ksa.com/' },
   { id: 'amazon', name: 'Amazon.sa', url: 'https://www.amazon.sa/', excluded: 'Not collected — the site’s terms of use prohibit automated data collection' },
   { id: 'noon', name: 'Noon', url: 'https://www.noon.com/saudi-en/', excluded: 'Not collected — the site’s terms of use prohibit automated data collection' },
 ]

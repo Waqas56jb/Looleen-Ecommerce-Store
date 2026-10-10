@@ -5,6 +5,9 @@
  *   node --max-old-space-size=6144 scripts/export_admin_demo.mjs LK-076738 LK-076744 …
  *
  * Reads output/master-catalog.json, suppliers/*.json and raw/<store>.jsonl.
+ * Also adds, by identical barcode, listings from stores collected after the
+ * master build (e.g. raw/keuneksa.jsonl), and manually verified prices from
+ * manual/verified-prices.json (see scripts/import_manual_prices.mjs).
  * Writes admin/src/data/seed/sourcing.ts — it contains CONFIDENTIAL supplier
  * costs, so the admin repo must stay private.
  */
@@ -37,7 +40,18 @@ for (const f of fs.readdirSync(RAW_DIR).filter((f) => f.endsWith('.jsonl')))
     if (urls.has(r.url)) raw.set(r.url, r)
   }
 
-const STORE_ID = { Looieen: 'looieen', 'Nice One': 'niceone', Faces: 'faces', 'Nahdi Online': 'nahdi', Whites: 'whites', Watsons: 'watsons', 'Beauty Select': 'beautyselect', 'Cosmetics.sa': 'cosmeticssa', 'Kohl Al Ward': 'kohlalward' }
+const STORE_ID = {
+  'Keune KSA (official)': 'keuneksa', Looieen: 'looieen', 'Nice One': 'niceone', Faces: 'faces', 'Nahdi Online': 'nahdi', Whites: 'whites', Watsons: 'watsons', 'Beauty Select': 'beautyselect', 'Cosmetics.sa': 'cosmeticssa', 'Kohl Al Ward': 'kohlalward' }
+
+const EXTRA = ['keuneksa']
+const extraStores = new Map(
+  EXTRA.filter((sid) => fs.existsSync(path.join(RAW_DIR, `${sid}.jsonl`))).map((sid) => [
+    sid,
+    fs.readFileSync(path.join(RAW_DIR, `${sid}.jsonl`), 'utf8').split('\n').filter(Boolean).map((l) => JSON.parse(l)),
+  ]),
+)
+const manualFile = path.join(ROOT, 'manual', 'verified-prices.json')
+const manual = fs.existsSync(manualFile) ? JSON.parse(fs.readFileSync(manualFile, 'utf8')) : []
 
 const products = picked.map((p, i) => {
   const offers = p.supplierOffers.map((o) => {
@@ -71,6 +85,18 @@ const products = picked.map((p, i) => {
       verifiedBy: 'LOOKS price collector',
     }
   })
+  // Stores collected after the master build: add exact barcode matches
+  if (p.barcode)
+    for (const [sid, list] of extraStores) {
+      if (prices.some((c) => c.retailerId === sid)) continue
+      const hit = list.filter((r) => r.barcode === p.barcode).sort((a, b) => a.price - b.price)[0]
+      if (hit)
+        prices.push({ id: `cp-${i + 1}-${prices.length + 1}`, retailerId: sid, price: hit.price, originalPrice: hit.originalPrice ?? null, seller: hit.storeName, inStock: hit.inStock !== false, url: hit.url, source: 'automatic', matchBy: 'barcode', listedName: hit.name, verifiedAt: hit.collectedAt, verifiedBy: 'LOOKS price collector' })
+    }
+  // Manually verified prices (Amazon.sa, Noon, …) recorded by the LOOKS team
+  for (const mv of manual.filter((m) => m.looksId === p.id)) {
+    prices.push({ id: `cp-${i + 1}-${prices.length + 1}`, retailerId: mv.retailerId, price: mv.price, originalPrice: mv.originalPrice ?? null, seller: mv.seller, inStock: mv.inStock, url: mv.url, source: 'manual', matchBy: mv.matchBy, listedName: mv.listedName, verifiedAt: mv.verifiedAt, verifiedBy: mv.verifiedBy, note: mv.note || undefined })
+  }
   return {
     id: p.id,
     brand: p.supplier.name.includes('Wella') ? 'Wella Professionals' : p.supplier.name.includes('Keune') ? 'Keune' : p.brand,

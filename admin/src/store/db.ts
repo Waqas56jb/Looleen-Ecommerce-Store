@@ -40,8 +40,10 @@ export interface Collection<T> {
 
 /** Bump to force-reseed every browser when seed data shape changes */
 const DB_VERSION = 2
+/** Sourcing demo data is refreshed independently (new verified prices) — bump when sourcing seed changes */
+const SOURCING_VERSION = 2
 
-function collection<T>(name: string, seed: T[]): UseBoundStore<StoreApi<Collection<T>>> {
+function collection<T>(name: string, seed: T[], version = DB_VERSION): UseBoundStore<StoreApi<Collection<T>>> {
   return create<Collection<T>>()(
     persist(
       (set) => ({
@@ -51,7 +53,7 @@ function collection<T>(name: string, seed: T[]): UseBoundStore<StoreApi<Collecti
       }),
       {
         name: `${STORE_CONFIG.storagePrefix}${name}`,
-        version: DB_VERSION,
+        version,
         storage: createJSONStorage(() => localStorage),
         partialize: (s) => ({ items: s.items }) as Collection<T>,
         migrate: () => ({ items: seed }) as Collection<T>,
@@ -78,9 +80,9 @@ export const db = {
   notifications: collection<AdminNotification>('notifications', seedNotifications),
   activity: collection<ActivityLog>('activity', seedActivity),
   admins: collection<AdminUser>('admins', seedAdmins),
-  sourcing: collection<SourcingProduct>('sourcing', seedSourcing),
-  suppliers: collection<Supplier>('suppliers', seedSuppliers),
-  retailers: collection<Retailer>('retailers', seedRetailers),
+  sourcing: collection<SourcingProduct>('sourcing', seedSourcing, SOURCING_VERSION),
+  suppliers: collection<Supplier>('suppliers', seedSuppliers, SOURCING_VERSION),
+  retailers: collection<Retailer>('retailers', seedRetailers, SOURCING_VERSION),
 }
 
 export type DbName = keyof typeof db
